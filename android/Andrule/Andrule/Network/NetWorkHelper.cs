@@ -7,16 +7,17 @@ using Andrule.UIDetails;
 
 namespace Andrule.Network
 {
-    public class NetWorkHelper
+    public class NetWorkHelper : IDisposable
     {
-        private UdpClient client = new UdpClient();
+        private UdpClient _client;
         public Context UIcontext;
 
         public bool Connect(string ip)
         {
             try
             {
-                client.Connect(ip, 51515);
+                _client = new UdpClient();
+                _client.Connect(ip, 51515);
             }
             catch (Exception e)
             {
@@ -32,7 +33,7 @@ namespace Andrule.Network
             var messageInByte = Encoding.ASCII.GetBytes(message);
             try
             {
-                client.Send(messageInByte, messageInByte.Length);
+                _client?.Send(messageInByte, messageInByte.Length);
             }
             catch (Exception e)
             {
@@ -44,12 +45,17 @@ namespace Andrule.Network
 
         public void CloseConnection()
         {
-            client.Close();
+            _client?.Close();
         }
 
         private void ShowErrorMessage(string message)
         {
             UIHelper.ShowMessage(message, UIcontext);
+        }
+
+        public void Dispose()
+        {
+            _client?.Close();
         }
     }
 }

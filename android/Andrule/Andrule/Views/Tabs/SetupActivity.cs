@@ -74,7 +74,7 @@ namespace Andrule.View
 
         private void SendData(IReadOnlyList<int> sensorData)
         {
-            netWorkHelper.Send(string.Format("^{0}|{1}|{2}|1|1|1|1$", sensorData[0], sensorData[1], sensorData[2]));
+            netWorkHelper.Send(string.Format("^{0}|{1}|{2}|0|0|0|0$", sensorData[0], sensorData[1], sensorData[2]));
         }
 
         public void OnSensorChanged(SensorEvent e)
@@ -82,10 +82,16 @@ namespace Andrule.View
             if (_isConnected)
             {
 
-                var rotation = (int)(e.Values[1] * 3000 + 30000);
-                var data = new List<int> { rotation, 100, 200 };
+                var rotation = (int)(e.Values[1] * 1638 + 16383);
+                var data = new List<int> { rotation, 16383, 16383 };
                 SendData(data);
             }
+        }
+
+        public new void Dispose()
+        {
+            base.Dispose();
+            netWorkHelper.Dispose();
         }
     }
 }
