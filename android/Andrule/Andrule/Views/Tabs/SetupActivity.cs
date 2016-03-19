@@ -37,7 +37,7 @@ namespace Andrule.View
 
         private void GetIpAndConnect(object sender, EventArgs e)
         {
-            var _isConnected = netWorkHelper.Connect(editIpText.Text);
+            _isConnected = netWorkHelper.Connect(editIpText.Text);
             if (_isConnected)
             {
                 connectButton.Click -= GetIpAndConnect;
