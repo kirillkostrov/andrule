@@ -1,8 +1,11 @@
-﻿using Android.App;
+﻿using System.Collections.Generic;
+using Android.App;
 using Android.Content;
 using Android.Hardware;
 using Android.Widget;
 using Android.OS;
+using Andrule.Network;
+using Java.Lang;
 
 namespace Andrule
 {
@@ -13,6 +16,7 @@ namespace Andrule
         static readonly object _syncLock = new object();
         TextView _sensorTextView;
         SensorManager _sensorManager;
+	    private NetWorkHelper netWorkHelper;
 
         protected override void OnCreate (Bundle bundle)
 		{
@@ -20,7 +24,9 @@ namespace Andrule
             SetContentView(Resource.Layout.Main);
             _sensorManager = (SensorManager)GetSystemService(Context.SensorService);
             _sensorTextView = FindViewById<TextView>(Resource.Id.CoordinateText);
-        }
+            netWorkHelper = new NetWorkHelper();
+            Connect("123");
+		}
 
         protected override void OnResume()
         {
@@ -44,9 +50,20 @@ namespace Andrule
 		{
 			lock (_syncLock)
 			{
+                SendData(new [] { e.Values[0], e.Values[1], e.Values[2] }); ;
 				_sensorTextView.Text = string.Format("x={0:f}, y={1:f}, y={2:f}", e.Values[0], e.Values[1], e.Values[2]);
 			}
 		}
+        
+	    private void Connect(string ip)
+	    {
+            netWorkHelper.Connect("192.168.137.1");
+	    }
+
+	    private void SendData(IReadOnlyList<float> sensorData)
+	    {
+            netWorkHelper.Send(string.Format("^{0}|{1}|{2}|1|1|1$", sensorData[0], sensorData[1], sensorData[2]));
+	    }
 	}
 }
 
