@@ -74,7 +74,7 @@ namespace Andrule.View
 
         private void SendData(IReadOnlyList<int> sensorData)
         {
-            netWorkHelper.Send(string.Format("^{0}|{1}|{2}|1|1|1$", sensorData[0], sensorData[1], sensorData[2]));
+            netWorkHelper.Send(string.Format("^{0}|{1}|{2}|1|1|1|1$", sensorData[0], sensorData[1], sensorData[2]));
         }
 
         public void OnSensorChanged(SensorEvent e)
