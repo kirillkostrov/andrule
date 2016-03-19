@@ -18,6 +18,9 @@ namespace Andrule
         private NetWorkHelper netWorkHelper;
         private SensorManager _sensorManager;
         private Sensor _sensor;
+        private string _connectionIp;
+        private bool _isConnected;
+        private Button connectBtn;
 
         protected override void OnCreate(Bundle bundle)
         {
@@ -25,28 +28,52 @@ namespace Andrule
             SetContentView(Resource.Layout.Main);
 
             _sensorTextView = FindViewById<TextView>(Resource.Id.CoordinateText);
+            connectBtn = FindViewById<Button>(Resource.Id.ConnectBtn);
+            connectBtn.Click += GetIpAndConnect;
 
             _sensorManager = (SensorManager)GetSystemService(SensorService);
             _sensor = _sensorManager.GetDefaultSensor(SensorType.Accelerometer);
 
             netWorkHelper = new NetWorkHelper { UIcontext = this };
-            Connect("192.168.137.1");
+        }
+
+        public void GetIpAndConnect(object sender, EventArgs e)
+        {
+            _connectionIp = FindViewById<EditText>(Resource.Id.ConnectIpText).Text;
+
+            Connect(string.IsNullOrEmpty(_connectionIp) ? "169.254.237.222" : _connectionIp);
+        }
+
+        private void CloseConnection(object sender, EventArgs e)
+        {
+            netWorkHelper.CloseConnection();
+            connectBtn.Click += GetIpAndConnect;
+            connectBtn.Click -= CloseConnection;
+            connectBtn.Text = "Connect";
+            _isConnected = false;
         }
 
         protected override void OnResume()
         {
             _sensorManager.RegisterListener(this, _sensor, SensorDelay.Ui);
             base.OnResume();
-            
+
         }
         protected override void OnPause()
         {
             base.OnPause();
-            _sensorManager.UnregisterListener(this);}
+            _sensorManager.UnregisterListener(this);
+        }
 
         private void Connect(string ip)
         {
-            netWorkHelper.Connect(ip);
+            _isConnected = netWorkHelper.Connect(ip);
+            if (_isConnected)
+            {
+                connectBtn.Click -= GetIpAndConnect;
+                connectBtn.Text = "Stop";
+                connectBtn.Click += CloseConnection;
+            }
         }
 
         private void SendData(IReadOnlyList<int> sensorData)
@@ -61,10 +88,14 @@ namespace Andrule
 
         public void OnSensorChanged(SensorEvent e)
         {
-            var rotation = (int)(e.Values[1] * 3000 +30000);
-            var data = new List<int> { rotation, 100, 200 };
-            _sensorTextView.Text = rotation.ToString();
-            SendData(data);
+            if (_isConnected)
+            {
+
+                var rotation = (int)(e.Values[1] * 3000 + 30000);
+                var data = new List<int> { rotation, 100, 200 };
+                _sensorTextView.Text = rotation.ToString();
+                SendData(data);
+            }
         }
     }
 }
