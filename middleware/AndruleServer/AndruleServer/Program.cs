@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Net;
 using System.Threading.Tasks;
 using AndruleServer.Server;
 
@@ -9,7 +10,7 @@ namespace AndruleServer
         static void Main(string[] args)
         {
             //create a new server
-            var server = new UdpListener("192.168.137.1", 51515);
+            var server = new UdpListener();
 
             var vJoyFeeder = new VJoyFeeder();
 
