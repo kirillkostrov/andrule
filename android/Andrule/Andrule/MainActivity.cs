@@ -1,12 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
 using Android.App;
 using Android.Content;
-using Android.Hardware;
 using Android.Widget;
 using Android.OS;
-using Android.Views;
-using Andrule.Network;
 using Andrule.View;
 
 namespace Andrule
