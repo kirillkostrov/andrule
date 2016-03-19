@@ -146,7 +146,7 @@ namespace Andrule
 			public const int SetupLayout = 2130968577;
 			
 			// aapt resource value: 0x7f040002
-			public const int TabitemLayout = 2130968578;
+			public const int WheelLayout = 2130968578;
 			
 			static Layout()
 			{

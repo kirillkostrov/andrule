@@ -12,14 +12,13 @@ using Android.Widget;
 
 namespace Andrule.View
 {
-    [Activity]
+    [Activity(Label = "Andrule", MainLauncher = true, Icon = "@mipmap/icon", ScreenOrientation = Android.Content.PM.ScreenOrientation.Landscape)]
     public class WheelActivity : Activity
     {
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
-            TextView textview = new TextView(this) { Text = "This is the WheelActivity tab" };
-            SetContentView(textview);
+            SetContentView(Resource.Layout.WheelLayout);
         }
     }
 }
