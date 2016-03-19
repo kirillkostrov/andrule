@@ -11,7 +11,6 @@ namespace Andrule
 	[Activity (Label = "Andrule", MainLauncher = true, Icon = "@mipmap/icon", ScreenOrientation = Android.Content.PM.ScreenOrientation.Landscape)]
 	public class MainActivity : Activity
 	{
-
         private SimulationListener _simulationListener;
 	    private TextView _sensorTextView;
 	    private object _syncLock = new object();
@@ -29,7 +28,7 @@ namespace Andrule
             _simulationListener = new SimulationListener(sensorManager);
 
             netWorkHelper = new NetWorkHelper();
-            Connect("123");
+            Connect("192.168.137.1");
 		}
 
         protected override void OnResume()
@@ -42,16 +41,15 @@ namespace Andrule
             base.OnPause();
             _simulationListener.StopSimulation();
         }
-
         
 	    private void Connect(string ip)
 	    {
-            netWorkHelper.Connect("192.168.137.1");
+            netWorkHelper.Connect(ip);
 	    }
 
 	    private void SendData(IReadOnlyList<float> sensorData)
 	    {
-            netWorkHelper.Send(string.Format("^{0}|{1}|{2}|1|1|1$", sensorData[0], sensorData[1], sensorData[2]));
+            netWorkHelper.Send(string.Format("^{0}|{1}|{2}|1|1|1$", _simulationListener.Rotation, sensorData[1], sensorData[2]));
 	    }
 	}
 }
