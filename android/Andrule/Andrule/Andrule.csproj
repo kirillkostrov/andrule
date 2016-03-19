@@ -88,64 +88,64 @@
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
-    <AndroidResource Include="Resources\drawable\arrow-left.png" />
+    <AndroidResource Include="Resources\drawable\arrowLeft.png" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\drawable\arrow-right.png" />
+    <AndroidResource Include="Resources\drawable\arrowRight.png" />
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\drawable\backgnd.png" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\drawable\Calibrate-button.png" />
+    <AndroidResource Include="Resources\drawable\CalibrateButton.png" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\drawable\calibrate-scale-active-line.png" />
+    <AndroidResource Include="Resources\drawable\calibrateScaleActiveLine.png" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\drawable\calibrate-scale.png" />
+    <AndroidResource Include="Resources\drawable\calibrateScale.png" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\drawable\calibrate_active.png" />
+    <AndroidResource Include="Resources\drawable\calibrateActive.png" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\drawable\calibrate_unselected.png" />
+    <AndroidResource Include="Resources\drawable\calibrateUnselected.png" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\drawable\connect-button.png" />
+    <AndroidResource Include="Resources\drawable\connectButton.png" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\drawable\green-status.png" />
+    <AndroidResource Include="Resources\drawable\greenStatus.png" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\drawable\red-status.png" />
+    <AndroidResource Include="Resources\drawable\redStatus.png" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\drawable\setup_active.png" />
+    <AndroidResource Include="Resources\drawable\setupActive.png" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\drawable\setup_unselected.png" />
+    <AndroidResource Include="Resources\drawable\setupUnselected.png" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\drawable\slider_1.png" />
+    <AndroidResource Include="Resources\drawable\slider1.png" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\drawable\slider_2.png" />
+    <AndroidResource Include="Resources\drawable\slider2.png" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\drawable\theme_active.png" />
+    <AndroidResource Include="Resources\drawable\themeActive.png" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\drawable\theme_unselected.png" />
+    <AndroidResource Include="Resources\drawable\themeUnselected.png" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\drawable\touch-room.png" />
+    <AndroidResource Include="Resources\drawable\touchRoom.png" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\drawable\wheel_active.png" />
+    <AndroidResource Include="Resources\drawable\wheelActive.png" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\drawable\wheel_unselected.png" />
+    <AndroidResource Include="Resources\drawable\wheelUnselected.png" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
 </Project>
