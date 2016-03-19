@@ -9,6 +9,7 @@ using Android.App;
 using Android.Content;
 using Android.OS;
 using Android.Runtime;
+using Android.Util;
 using Android.Views;
 using Android.Widget;
 
@@ -18,13 +19,21 @@ namespace Andrule.Network
     {
         private UdpClient client = new UdpClient();
 
-        public string Connect(string ip)
+        public bool Connect(string ip)
         {
-            client.Connect(ip, 32323);
-            return client.EnableBroadcast ? "Connected" : "Error";
+            try
+            {
+                client.Connect(ip, 51515);
+            }
+            catch (Exception e)
+            {
+                Log.Debug("Connection error: ", e.ToString());
+                return false;
+            }
+            return true;
         }
 
-        public string Send(string message)
+        public void Send(string message)
         {
             var messageInByte = Encoding.ASCII.GetBytes(message);
             try
@@ -33,10 +42,9 @@ namespace Andrule.Network
             }
             catch (Exception e)
             {
-                return e.ToString();
+                Log.Debug("Sending error: ", e.ToString());
                 throw;
             }
-            return "ok";
         }
 
         public void CloseConnection()

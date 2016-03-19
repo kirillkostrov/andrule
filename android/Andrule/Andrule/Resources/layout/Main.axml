@@ -4,4 +4,5 @@
     p1:textAppearance="?android:attr/textAppearanceSmall"
     p1:layout_width="match_parent"
     p1:layout_height="match_parent"
-    p1:id="@+id/CoordinateText" />
+    p1:id="@+id/CoordinateText"
+    p1:textSize="20pt" />
