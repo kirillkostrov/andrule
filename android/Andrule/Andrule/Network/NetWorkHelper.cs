@@ -17,6 +17,7 @@ namespace Andrule.Network
             try
             {
                 client.Connect(ip, 51515);
+                //client.Connect("192.168.34.146", 51515);
             }
             catch (Exception e)
             {
