@@ -10,11 +10,6 @@ namespace Andrule
     [Activity(Label = "Andrule", MainLauncher = true, Icon = "@mipmap/icon", ScreenOrientation = Android.Content.PM.ScreenOrientation.Landscape)]
     public class MainActivity : TabActivity
     {
-
-        private string _connectionIp;
-        private bool _isConnected;
-        private Button connectBtn;
-
         protected override void OnCreate(Bundle bundle)
         {
             base.OnCreate(bundle);

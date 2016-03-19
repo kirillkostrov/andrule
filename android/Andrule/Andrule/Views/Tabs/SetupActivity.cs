@@ -12,7 +12,6 @@ namespace Andrule.View
     public class SetupActivity : Activity, ISensorEventListener
     {
         private NetWorkHelper netWorkHelper;
-        private TextView textview;
         private EditText editIpText;
         private Button connectButton;
         private bool _isConnected;
