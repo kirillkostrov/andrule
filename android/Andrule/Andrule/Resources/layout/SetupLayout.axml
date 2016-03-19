@@ -7,7 +7,8 @@
     <EditText
         p1:layout_width="match_parent"
         p1:layout_height="wrap_content"
-        p1:id="@+id/editIpText" />
+        p1:id="@+id/editIpText"
+        p1:inputType="numberDecimal" />
     <Button
         p1:text="Connect"
         p1:layout_width="match_parent"
