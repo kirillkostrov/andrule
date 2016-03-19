@@ -27,7 +27,7 @@ namespace Andrule
             var sensorManager = (SensorManager)GetSystemService(Context.SensorService);
             _simulationListener = new SimulationListener(sensorManager);
 
-            netWorkHelper = new NetWorkHelper();
+            netWorkHelper = new NetWorkHelper(this);
             Connect("192.168.137.1");
 		}
 

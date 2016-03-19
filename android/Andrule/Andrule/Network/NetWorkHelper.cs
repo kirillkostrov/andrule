@@ -18,15 +18,24 @@ namespace Andrule.Network
     public class NetWorkHelper
     {
         private UdpClient client = new UdpClient();
+        private Context context;
+        private string ip;
+
+        public NetWorkHelper(Context context)
+        {
+            this.context = context;
+        }
 
         public bool Connect(string ip)
         {
+            this.ip = ip;
             try
             {
                 client.Connect(ip, 51515);
             }
             catch (Exception e)
             {
+                ShowMessage("Connection error!");
                 Log.Debug("Connection error: ", e.ToString());
                 return false;
             }
@@ -42,6 +51,7 @@ namespace Andrule.Network
             }
             catch (Exception e)
             {
+                ShowMessage("Sending error!");
                 Log.Debug("Sending error: ", e.ToString());
                 throw;
             }
@@ -50,6 +60,14 @@ namespace Andrule.Network
         public void CloseConnection()
         {
             client.Close();
+        }
+
+        private void ShowMessage(string message)
+        {
+            var dialog = new AlertDialog.Builder(context);
+            dialog.SetMessage(message);
+            dialog.SetNegativeButton("Cancel", (s, e) => { });
+            dialog.Create().Show();
         }
     }
 }
