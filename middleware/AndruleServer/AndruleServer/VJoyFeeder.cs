@@ -20,19 +20,18 @@ namespace AndruleServer
             _joystickState = new vJoy.JoystickState();
             _id = 1;
             _joystick.ResetVJD(_id);
-        }
-     
-        public void Feed(PhoneData data)
-        {
+
             if (!_joystick.vJoyEnabled())
             {
                 Console.WriteLine("vJoy driver not enabled: Failed Getting vJoy attributes.\n");
                 return;
             }
-            else
-                Console.WriteLine("Vendor: {0}\nProduct :{1}\nVersion Number:{2}\n", _joystick.GetvJoyManufacturerString(), _joystick.GetvJoyProductString(), _joystick.GetvJoySerialNumberString());
-            
-          
+            Console.WriteLine("Vendor: {0}\nProduct :{1}\nVersion Number:{2}\n", _joystick.GetvJoyManufacturerString(), _joystick.GetvJoyProductString(), _joystick.GetvJoySerialNumberString());
+
+        }
+
+        public void Feed(PhoneData data)
+        {
             // Get the number of buttons and POV Hat switchessupported by this vJoy device
             int nButtons = _joystick.GetVJDButtonNumber(_id);
             int contPovNumber = _joystick.GetVJDContPovNumber(_id);
