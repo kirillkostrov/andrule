@@ -7,7 +7,7 @@ using Andrule.View;
 
 namespace Andrule
 {
-    [Activity(Label = "Andrule", MainLauncher = true, Icon = "@mipmap/icon", ScreenOrientation = Android.Content.PM.ScreenOrientation.Landscape)]
+    [Activity(Label = "Andrule", MainLauncher = true, ScreenOrientation = Android.Content.PM.ScreenOrientation.Landscape)]
     public class MainActivity : TabActivity
     {
         protected override void OnCreate(Bundle bundle)

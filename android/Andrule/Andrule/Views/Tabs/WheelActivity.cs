@@ -12,7 +12,7 @@ using Android.Widget;
 
 namespace Andrule.View
 {
-    [Activity(Label = "Andrule", MainLauncher = true, Icon = "@mipmap/icon", ScreenOrientation = Android.Content.PM.ScreenOrientation.Landscape)]
+    [Activity]
     public class WheelActivity : Activity
     {
         protected override void OnCreate(Bundle savedInstanceState)
