@@ -4,19 +4,30 @@
     p1:layout_width="match_parent"
     p1:layout_height="match_parent"
     p1:layout_centerVertical="true"
-    p1:id="@+id/linearLayout1">
+    p1:id="@+id/linearLayout1"
+    style="@android:style/Theme.Black.NoTitleBar">
     <EditText
-        p1:text="Enter IP:"
-        p1:layout_width="match_parent"
-        p1:layout_height="wrap_content"
+        p1:layout_width="284.0dp"
+        p1:layout_height="52.5dp"
         p1:id="@+id/editIpText"
-        p1:inputType="numberDecimal" />
+        p1:inputType="phone"
+        p1:textStyle="bold"
+        p1:layout_marginLeft="166.5dp"
+        p1:layout_marginTop="68.5dp"
+        p1:typeface="monospace"
+        p1:hint="Enter IP:"
+        p1:drawableTop="#ffffffff"
+        p1:password="false"
+        p1:textColorHint="#ffffffff"
+        p1:background="@drawable/edittextstyle"
+        p1:gravity="center"
+        p1:digits="0123456789." />
     <Button
         p1:text="Connect"
         p1:id="@+id/connectButton"
         p1:background="@drawable/connectButton"
         p1:layout_marginLeft="220dp"
-        p1:layout_marginTop="15dp"
+        p1:layout_marginTop="61.0dp"
         p1:layout_marginBottom="20dp"
         p1:layout_marginRight="252.0dp"
         p1:layout_centerVertical="true"
