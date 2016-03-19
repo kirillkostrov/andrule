@@ -8,7 +8,7 @@ using Andrule.Network;
 
 namespace Andrule.View
 {
-    [Activity]
+    [Activity(Label = "Andrule", MainLauncher = true, Icon = "@mipmap/icon", ScreenOrientation = Android.Content.PM.ScreenOrientation.Landscape)]
     public class SetupActivity : Activity, ISensorEventListener
     {
         private NetWorkHelper netWorkHelper;
