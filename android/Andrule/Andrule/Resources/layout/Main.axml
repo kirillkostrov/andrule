@@ -17,10 +17,14 @@
             p1:layout_width="match_parent"
             p1:layout_height="wrap_content"
             p1:id="@+id/CoordinateText" />
+        <EditText
+            p1:layout_width="match_parent"
+            p1:layout_height="wrap_content"
+            p1:id="@+id/ConnectIpText" />
     </LinearLayout>
     <Button
-        p1:text="Send Data"
+        p1:text="Connect"
         p1:layout_width="match_parent"
         p1:layout_height="wrap_content"
-        p1:id="@+id/SendData" />
+        p1:id="@+id/ConnectBtn" />
 </LinearLayout>
