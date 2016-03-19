@@ -7,11 +7,12 @@ using Android.Widget;
 using Android.OS;
 using Android.Views;
 using Andrule.Network;
+using Andrule.View;
 
 namespace Andrule
 {
     [Activity(Label = "Andrule", MainLauncher = true, Icon = "@mipmap/icon", ScreenOrientation = Android.Content.PM.ScreenOrientation.Landscape)]
-    public class MainActivity : Activity, ISensorEventListener
+    public class MainActivity : TabActivity, ISensorEventListener
     {
         private TextView _sensorTextView;
         private object _syncLock = new object();
@@ -27,9 +28,12 @@ namespace Andrule
             base.OnCreate(bundle);
             SetContentView(Resource.Layout.Main);
 
-            _sensorTextView = FindViewById<TextView>(Resource.Id.CoordinateText);
-            connectBtn = FindViewById<Button>(Resource.Id.ConnectBtn);
-            connectBtn.Click += GetIpAndConnect;
+            ////_sensorTextView = FindViewById<TextView>(Resource.Id.CoordinateText);
+            ////connectBtn = FindViewById<Button>(Resource.Id.ConnectBtn);
+            ////connectBtn.Click += GetIpAndConnect;
+
+            CreateTab(typeof(SetupActivity), "setup", "Setup");
+            CreateTab(typeof(WheelActivity), "wheel", "Wheel");
 
             _sensorManager = (SensorManager)GetSystemService(SensorService);
             _sensor = _sensorManager.GetDefaultSensor(SensorType.Accelerometer);
@@ -37,9 +41,21 @@ namespace Andrule
             netWorkHelper = new NetWorkHelper { UIcontext = this };
         }
 
+        private void CreateTab(Type activityType, string tag, string label)
+        {
+            var intent = new Intent(this, activityType);
+            intent.AddFlags(ActivityFlags.NewTask);
+
+            var spec = TabHost.NewTabSpec(tag);
+            spec.SetIndicator(label);
+            spec.SetContent(intent);
+
+            TabHost.AddTab(spec);
+        }
+
         public void GetIpAndConnect(object sender, EventArgs e)
         {
-            _connectionIp = FindViewById<EditText>(Resource.Id.ConnectIpText).Text;
+            //_connectionIp = FindViewById<EditText>(Resource.Id.ConnectIpText).Text;
 
             Connect(string.IsNullOrEmpty(_connectionIp) ? "169.254.237.222" : _connectionIp);
         }
