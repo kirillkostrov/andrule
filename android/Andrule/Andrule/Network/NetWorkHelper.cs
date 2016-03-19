@@ -12,21 +12,26 @@ using Android.Runtime;
 using Android.Util;
 using Android.Views;
 using Android.Widget;
+using Andrule.UIDetails;
 
 namespace Andrule.Network
 {
     public class NetWorkHelper
     {
         private UdpClient client = new UdpClient();
+        public Context UIcontext;
+        private string ip;
 
         public bool Connect(string ip)
         {
+            this.ip = ip;
             try
             {
                 client.Connect(ip, 51515);
             }
             catch (Exception e)
             {
+                ShowErrorMessage("Connection error!");
                 Log.Debug("Connection error: ", e.ToString());
                 return false;
             }
@@ -42,6 +47,7 @@ namespace Andrule.Network
             }
             catch (Exception e)
             {
+                ShowErrorMessage("Sending error!");
                 Log.Debug("Sending error: ", e.ToString());
                 throw;
             }
@@ -50,6 +56,11 @@ namespace Andrule.Network
         public void CloseConnection()
         {
             client.Close();
+        }
+
+        private void ShowErrorMessage(string message)
+        {
+            UIHelper.ShowMessage(message, UIcontext);
         }
     }
 }

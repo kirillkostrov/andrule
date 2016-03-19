@@ -1,8 +1,26 @@
 <?xml version="1.0" encoding="utf-8"?>
-<TextView xmlns:p1="http://schemas.android.com/apk/res/android"
-    p1:text="x: y: y:"
-    p1:textAppearance="?android:attr/textAppearanceSmall"
+<LinearLayout xmlns:p1="http://schemas.android.com/apk/res/android"
+    p1:orientation="vertical"
     p1:layout_width="match_parent"
     p1:layout_height="match_parent"
-    p1:id="@+id/CoordinateText"
-    p1:textSize="20pt" />
+    p1:id="@+id/linearLayout1">
+    <LinearLayout
+        p1:orientation="vertical"
+        p1:minWidth="25px"
+        p1:minHeight="25px"
+        p1:layout_width="match_parent"
+        p1:layout_height="wrap_content"
+        p1:id="@+id/linearLayout2">
+        <TextView
+            p1:text="Data"
+            p1:textAppearance="?android:attr/textAppearanceSmall"
+            p1:layout_width="match_parent"
+            p1:layout_height="wrap_content"
+            p1:id="@+id/CoordinateText" />
+    </LinearLayout>
+    <Button
+        p1:text="Send Data"
+        p1:layout_width="match_parent"
+        p1:layout_height="wrap_content"
+        p1:id="@+id/SendData" />
+</LinearLayout>
