@@ -61,7 +61,7 @@ namespace Andrule
 
         public void OnSensorChanged(SensorEvent e)
         {
-            var rotation = (int)(e.Values[1] * 100);
+            var rotation = (int)(e.Values[1] * 3000 +30000);
             var data = new List<int> { rotation, 100, 200 };
             _sensorTextView.Text = rotation.ToString();
             SendData(data);
