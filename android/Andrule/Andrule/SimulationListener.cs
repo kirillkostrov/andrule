@@ -1,19 +1,20 @@
 using System;
+using Android.Content;
 using Android.Hardware;
 using Android.Runtime;
+using Android.Views;
 
 namespace Andrule
 {
-    class SimulationListener : ISensorEventListener
+    class SimulationListener : View, ISensorEventListener
     {
         private SensorManager _sensorManager;
         private Sensor _sensor;
 
         public int Rotation { get; private set; }
 
-        public IntPtr Handle { get; }
-
-        public SimulationListener(SensorManager sensorManager)
+        public SimulationListener(Context context, SensorManager sensorManager)
+            : base(context)
         {
             _sensorManager = sensorManager;
             _sensor = _sensorManager.GetDefaultSensor(SensorType.Accelerometer);
@@ -43,7 +44,5 @@ namespace Andrule
 
             Rotation = (int)(e.Values[1] * 100);
         }
-
-        public void Dispose() { }
     }
 }
