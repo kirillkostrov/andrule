@@ -11,11 +11,9 @@ namespace Andrule.Network
     {
         private UdpClient client = new UdpClient();
         public Context UIcontext;
-        private string ip;
 
         public bool Connect(string ip)
         {
-            this.ip = ip;
             try
             {
                 client.Connect(ip, 51515);
