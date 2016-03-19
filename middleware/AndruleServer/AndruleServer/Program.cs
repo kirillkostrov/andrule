@@ -20,8 +20,8 @@ namespace AndruleServer
 
                 if (received.Status != TaskStatus.Faulted && received.Result.Message != null)
                 {
-                    Console.WriteLine($"Message{received.Result.Message}");
-                    Console.WriteLine($"Sender {received.Result.Sender}");
+                    //Console.WriteLine($"Message{received.Result.Message}");
+                    //Console.WriteLine($"Sender {received.Result.Sender}");
 
                     if (received.Result.Message.Contains("quit"))
                         break;

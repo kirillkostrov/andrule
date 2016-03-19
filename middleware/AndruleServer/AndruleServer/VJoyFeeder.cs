@@ -49,6 +49,16 @@ namespace AndruleServer
                     return;
             };
 
+            // Test if DLL matches the driver
+            UInt32 dllVer = 0, drvVer = 0;
+            bool match = _joystick.DriverMatch(ref dllVer, ref drvVer);
+            if (match)
+                Console.WriteLine("Version of Driver Matches DLL Version ({0:X})\n", dllVer);
+            else
+                Console.WriteLine("Version of Driver ({0:X}) does NOT match DLL Version ({1:X})\n", drvVer, dllVer);
+
+            _joystick.AcquireVJD(_id);
+
         }
 
         public void Feed(PhoneData data)
@@ -58,13 +68,7 @@ namespace AndruleServer
             int contPovNumber = _joystick.GetVJDContPovNumber(_id);
             int discPovNumber = _joystick.GetVJDDiscPovNumber(_id);
 
-            // Test if DLL matches the driver
-            UInt32 dllVer = 0, drvVer = 0;
-            bool match = _joystick.DriverMatch(ref dllVer, ref drvVer);
-            if (match)
-                Console.WriteLine("Version of Driver Matches DLL Version ({0:X})\n", dllVer);
-            else
-                Console.WriteLine("Version of Driver ({0:X}) does NOT match DLL Version ({1:X})\n", drvVer, dllVer);
+
 
             long maxval = 0;
             _joystick.GetVJDAxisMax(_id, HID_USAGES.HID_USAGE_X, ref maxval);
@@ -91,29 +95,13 @@ namespace AndruleServer
 
             if (contPovNumber > 0)
             {
-                // Make Continuous POV Hat spin
-                _joystickState.bHats = (count * 70);
-                _joystickState.bHatsEx1 = (count * 70) + 3000;
-                _joystickState.bHatsEx2 = (count * 70) + 5000;
-                _joystickState.bHatsEx3 = 15000 - (count * 70);
-                if ((count * 70) > 36000)
-                {
                     _joystickState.bHats = 0xFFFFFFFF; // Neutral state
                     _joystickState.bHatsEx1 = 0xFFFFFFFF; // Neutral state
                     _joystickState.bHatsEx2 = 0xFFFFFFFF; // Neutral state
                     _joystickState.bHatsEx3 = 0xFFFFFFFF; // Neutral state
-                };
             }
             else
             {
-                // Make 5-position POV Hat spin
-                pov[0] = (byte)(((count / 20) + 0) % 4);
-                pov[1] = (byte)(((count / 20) + 1) % 4);
-                pov[2] = (byte)(((count / 20) + 2) % 4);
-                pov[3] = (byte)(((count / 20) + 3) % 4);
-
-                _joystickState.bHats = (uint)(pov[3] << 12) | (uint)(pov[2] << 8) | (uint)(pov[1] << 4) | (uint)pov[0];
-                if ((count) > 550)
                     _joystickState.bHats = 0xFFFFFFFF; // Neutral state
             };
 
