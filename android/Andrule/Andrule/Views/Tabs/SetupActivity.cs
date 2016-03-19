@@ -94,12 +94,13 @@ namespace Andrule.View
 
         public void OnSensorChanged(SensorEvent e)
         {
-            if (_isConnected)
-            {
-                var rotation = (int)(LowPassFilter(e.Values[1]) * 1638 + 16383);
-                var data = new List<int> { rotation, 16383, 16383 };
-                SendData(data);
-            }
+            if (!_isConnected) return;
+
+            var rotation = (int)(LowPassFilter(e.Values[1]) * 1638 + 16383);
+            var throttle = (int)(e.Values[0] * 1638 + 16383);
+            var zAxis = (int)(e.Values[2] * 1638 + 16383);
+            var data = new List<int> { rotation, throttle, zAxis };
+            SendData(data);
         }
 
         public new void Dispose()
