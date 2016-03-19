@@ -87,5 +87,11 @@ namespace Andrule.View
                 SendData(data);
             }
         }
+
+        public new void Dispose()
+        {
+            base.Dispose();
+            netWorkHelper.Dispose();
+        }
     }
 }
