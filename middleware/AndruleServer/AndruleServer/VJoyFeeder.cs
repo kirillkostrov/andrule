@@ -28,6 +28,27 @@ namespace AndruleServer
             }
             Console.WriteLine("Vendor: {0}\nProduct :{1}\nVersion Number:{2}\n", _joystick.GetvJoyManufacturerString(), _joystick.GetvJoyProductString(), _joystick.GetvJoySerialNumberString());
 
+            // Get the state of the requested device
+            VjdStat status = _joystick.GetVJDStatus(_id);
+            switch (status)
+            {
+                case VjdStat.VJD_STAT_OWN:
+                    Console.WriteLine("vJoy Device {0} is already owned by this feeder\n", _id);
+                    break;
+                case VjdStat.VJD_STAT_FREE:
+                    Console.WriteLine("vJoy Device {0} is free\n", _id);
+                    break;
+                case VjdStat.VJD_STAT_BUSY:
+                    Console.WriteLine("vJoy Device {0} is already owned by another feeder\nCannot continue\n", _id);
+                    return;
+                case VjdStat.VJD_STAT_MISS:
+                    Console.WriteLine("vJoy Device {0} is not installed or disabled\nCannot continue\n", _id);
+                    return;
+                default:
+                    Console.WriteLine("vJoy Device {0} general error\nCannot continue\n", _id);
+                    return;
+            };
+
         }
 
         public void Feed(PhoneData data)
