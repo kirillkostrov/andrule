@@ -10,10 +10,9 @@ namespace AndruleServer.Server
 
         public UdpListener(string ip, int port) : this(new IPEndPoint(IPAddress.Parse(ip), port))
         {
-
         }
 
-        public UdpListener() : this(new IPEndPoint(IPAddress.Any, 32123))
+        public UdpListener() : this(new IPEndPoint(IPAddress.Any, 51515))
         {
         }
 
