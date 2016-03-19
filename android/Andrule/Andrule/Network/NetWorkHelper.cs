@@ -17,7 +17,8 @@ namespace Andrule.Network
             try
             {
                 _client = new UdpClient();
-                _client.Connect(ip, 51515);
+                //_client.Connect(ip, 51515);
+                _client.Connect("192.168.34.146", 51515);
             }
             catch (Exception e)
             {
@@ -39,7 +40,7 @@ namespace Andrule.Network
             {
                 ShowErrorMessage("Sending error!");
                 Log.Debug("Sending error: ", e.ToString());
-                throw;
+                //throw;
             }
         }
 

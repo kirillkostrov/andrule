@@ -20,6 +20,10 @@ namespace Andrule.View
         private Sensor _sensor;
         private SensorManager _sensorManager;
 
+        private const float SmoothingFactor = 0.005f;
+
+        private float _previousReading = 0;
+
         protected override void OnCreate(Bundle savedInstanceState)
         {
             netWorkHelper = new NetWorkHelper() {UIcontext = this};
@@ -77,12 +81,23 @@ namespace Andrule.View
             netWorkHelper.Send(string.Format("^{0}|{1}|{2}|0|0|0|0$", sensorData[0], sensorData[1], sensorData[2]));
         }
 
+        private float LowPassFilter(float newReading)
+        {
+            var filteredValue = 0.0f;
+
+            filteredValue = SmoothingFactor * newReading + (1 - SmoothingFactor) * _previousReading;
+            _previousReading = filteredValue;
+
+            return filteredValue;
+
+
+        }
+
         public void OnSensorChanged(SensorEvent e)
         {
             if (_isConnected)
             {
-
-                var rotation = (int)(e.Values[1] * 1638 + 16383);
+                var rotation = (int)(LowPassFilter(e.Values[1]) * 1638 + 16383);
                 var data = new List<int> { rotation, 16383, 16383 };
                 SendData(data);
             }
