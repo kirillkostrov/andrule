@@ -1,4 +1,5 @@
-﻿using Android.App;
+﻿using System;
+using Android.App;
 using Android.Content;
 using Android.Hardware;
 using Android.Widget;
@@ -7,46 +8,32 @@ using Android.OS;
 namespace Andrule
 {
 	[Activity (Label = "Andrule", MainLauncher = true, Icon = "@mipmap/icon", ScreenOrientation = Android.Content.PM.ScreenOrientation.Landscape)]
-	public class MainActivity : Activity, ISensorEventListener
+	public class MainActivity : Activity
 	{
-		int count = 1;
-        static readonly object _syncLock = new object();
-        TextView _sensorTextView;
-        SensorManager _sensorManager;
+        private SimulationListener _simulationListener;
+	    private TextView _sensorTextView;
+	    private object _syncLock = new object();
 
         protected override void OnCreate (Bundle bundle)
 		{
             base.OnCreate(bundle);
             SetContentView(Resource.Layout.Main);
-            _sensorManager = (SensorManager)GetSystemService(Context.SensorService);
+            
             _sensorTextView = FindViewById<TextView>(Resource.Id.CoordinateText);
+            var sensorManager = (SensorManager)GetSystemService(Context.SensorService);
+            _simulationListener = new SimulationListener(sensorManager);
         }
 
         protected override void OnResume()
         {
             base.OnResume();
-            _sensorManager.RegisterListener(this,
-                                            _sensorManager.GetDefaultSensor(SensorType.Accelerometer),
-                                            SensorDelay.Ui);
+            _simulationListener.StartSimulation();
         }
         protected override void OnPause()
         {
             base.OnPause();
-            _sensorManager.UnregisterListener(this);
+            _simulationListener.StopSimulation();
         }
-
-        public void OnAccuracyChanged(Sensor sensor, SensorStatus accuracy)
-		{
-			// We don't want to do anything here.
-		}
-
-		public void OnSensorChanged(SensorEvent e)
-		{
-			lock (_syncLock)
-			{
-				_sensorTextView.Text = string.Format("x={0:f}, y={1:f}, y={2:f}", e.Values[0], e.Values[1], e.Values[2]);
-			}
-		}
 	}
 }
 
