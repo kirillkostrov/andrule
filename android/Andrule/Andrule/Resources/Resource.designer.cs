@@ -117,26 +117,14 @@ namespace Andrule
 		public partial class Id
 		{
 			
-			// aapt resource value: 0x7f060006
-			public const int connectButton = 2131099654;
-			
-			// aapt resource value: 0x7f060005
-			public const int editIpText = 2131099653;
+			// aapt resource value: 0x7f060002
+			public const int connectButton = 2131099650;
 			
 			// aapt resource value: 0x7f060001
-			public const int linearLayout1 = 2131099649;
-			
-			// aapt resource value: 0x7f060002
-			public const int linearLayout2 = 2131099650;
-			
-			// aapt resource value: 0x7f060003
-			public const int linearLayout3 = 2131099651;
-			
-			// aapt resource value: 0x7f060004
-			public const int linearLayout4 = 2131099652;
+			public const int editIpText = 2131099649;
 			
 			// aapt resource value: 0x7f060000
-			public const int mainTabs = 2131099648;
+			public const int linearLayout1 = 2131099648;
 			
 			static Id()
 			{
@@ -158,7 +146,7 @@ namespace Andrule
 			public const int SetupLayout = 2130968577;
 			
 			// aapt resource value: 0x7f040002
-			public const int TabitemLayout = 2130968578;
+			public const int WheelLayout = 2130968578;
 			
 			static Layout()
 			{

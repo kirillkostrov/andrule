@@ -18,8 +18,7 @@ namespace Andrule.View
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
-            TextView textview = new TextView(this) { Text = "This is the WheelActivity tab" };
-            SetContentView(textview);
+            SetContentView(Resource.Layout.WheelLayout);
         }
     }
 }
