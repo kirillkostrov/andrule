@@ -29,7 +29,7 @@ namespace Andrule
             _sensorManager = (SensorManager)GetSystemService(SensorService);
             _sensor = _sensorManager.GetDefaultSensor(SensorType.Accelerometer);
 
-            netWorkHelper = new NetWorkHelper();
+            netWorkHelper = new NetWorkHelper { UIcontext = this };
             Connect("192.168.137.1");
         }
 
