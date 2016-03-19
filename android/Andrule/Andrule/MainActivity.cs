@@ -10,10 +10,13 @@ namespace Andrule
     [Activity(Label = "Andrule", MainLauncher = true, ScreenOrientation = Android.Content.PM.ScreenOrientation.Landscape)]
     public class MainActivity : TabActivity
     {
+        public static TabHost Tabs { get; private set;}
+
         protected override void OnCreate(Bundle bundle)
         {
             base.OnCreate(bundle);
             SetContentView(Resource.Layout.Main);
+            Tabs = TabHost;
 
             CreateTab(typeof(SetupActivity), "setup", "Setup");
             CreateTab(typeof(WheelActivity), "wheel", "Wheel");
@@ -24,11 +27,11 @@ namespace Andrule
             var intent = new Intent(this, activityType);
             intent.AddFlags(ActivityFlags.NewTask);
 
-            var spec = TabHost.NewTabSpec(tag);
+            var spec = Tabs.NewTabSpec(tag);
             spec.SetIndicator(label);
             spec.SetContent(intent);
 
-            TabHost.AddTab(spec);
+            Tabs.AddTab(spec);
         }
     }
 }

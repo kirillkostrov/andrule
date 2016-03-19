@@ -46,6 +46,7 @@ namespace Andrule.View
                 connectButton.Click -= GetIpAndConnect;
                 connectButton.Text = "Stop";
                 connectButton.Click += CloseConnection;
+                MainActivity.Tabs.SetCurrentTabByTag("wheel");
             }
         }
 
