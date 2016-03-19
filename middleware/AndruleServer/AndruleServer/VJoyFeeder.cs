@@ -73,9 +73,9 @@ namespace AndruleServer
             long maxval = 0;
             _joystick.GetVJDAxisMax(_id, HID_USAGES.HID_USAGE_X, ref maxval);
 
-            _axisX = data.AxisX; if (_axisX > maxval) _axisX = (int)maxval;
-            _axisY = data.AxisY; if (_axisY > maxval) _axisY = (int)maxval;
-            _axisZ = data.AxisZ; if (_axisZ > maxval) _axisZ = (int)maxval;
+            _axisX = data.AxisX; if (_axisX > maxval) _axisX = (int)maxval; if (_axisX < 0) _axisX = 0;
+            _axisY = data.AxisY; if (_axisY > maxval) _axisY = (int)maxval; if (_axisY < 0) _axisY = 0;
+            _axisZ = data.AxisZ; if (_axisZ > maxval) _axisZ = (int)maxval; if (_axisZ < 0) _axisZ = 0;
 
             uint count = 0;
 
