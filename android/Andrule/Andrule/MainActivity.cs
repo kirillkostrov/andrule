@@ -28,7 +28,7 @@ namespace Andrule
             intent.AddFlags(ActivityFlags.NewTask);
 
             var spec = Tabs.NewTabSpec(tag);
-            spec.SetIndicator(labe);
+			spec.SetIndicator(label);
             spec.SetContent(intent);
 
             Tabs.AddTab(spec);
