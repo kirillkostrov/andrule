@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.IO;
 using Android.App;
 using Android.Hardware;
 using Android.OS;
@@ -19,9 +20,10 @@ namespace Andrule.View
         private Sensor _sensor;
         private SensorManager _sensorManager;
 
-        private const float SmoothingFactor = 0.005f;
+        private const float SmoothingFactor = 0.4f;
 
-        private float _previousReading = 0;
+        private float _previousSteeringReading = 0;
+        private float _previousThrottleReading = 0;
 
         protected override void OnCreate(Bundle savedInstanceState)
         {
@@ -81,12 +83,12 @@ namespace Andrule.View
             netWorkHelper.Send(string.Format("^{0}|{1}|{2}|0|0|0|0$", sensorData[0], sensorData[1], sensorData[2]));
         }
 
-        private float LowPassFilter(float newReading)
+        private float LowPassFilter(float newReading, ref float oldReading)
         {
             var filteredValue = 0.0f;
 
-            filteredValue = SmoothingFactor * newReading + (1 - SmoothingFactor) * _previousReading;
-            _previousReading = filteredValue;
+            filteredValue = SmoothingFactor * newReading + (1 - SmoothingFactor) * oldReading;
+            oldReading = filteredValue;
 
             return filteredValue;
 
@@ -95,12 +97,13 @@ namespace Andrule.View
 
         public void OnSensorChanged(SensorEvent e)
         {
-            if (_isConnected)
-            {
-                var rotation = (int)(LowPassFilter(e.Values[1]) * 1638 + 16383);
-                var data = new List<int> { rotation, 16383, 16383 };
-                SendData(data);
-            }
+            if (!_isConnected) return;
+
+            var rotation = (int)(LowPassFilter(e.Values[1], ref _previousSteeringReading) * 1638 + 16383);
+            var throttle = (int)(16383 - LowPassFilter(e.Values[2], ref _previousThrottleReading) * 1638 * 2);
+            var zAxis = 16383;
+            var data = new List<int> { rotation, throttle, zAxis };
+            SendData(data);
         }
 
         public new void Dispose()
