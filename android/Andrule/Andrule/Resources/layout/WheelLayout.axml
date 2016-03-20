@@ -5,4 +5,91 @@
     android:layout_height="match_parent"
     android:minWidth="25px"
     android:minHeight="25px"
-    android:keepScreenOn="true" />
+    android:keepScreenOn="true"
+    android:scrollbars="vertical"
+    android:verticalScrollbarPosition="defaultPosition">
+    <SeekBar
+        android:layout_width="250.5dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/seekBarBrake"
+        android:layout_marginBottom="23.5dp"
+        android:layout_marginLeft="-50.5dp"
+        android:rotation="270"
+        android:layout_marginTop="120dp"
+        android:max="65"
+        android:progress="0" />
+    <LinearLayout
+        android:id="@+id/wrapper"
+        android:layout_width="340dp"
+        android:weightSum="1"
+        android:orientation="vertical"
+        android:layout_height="250dp"
+        android:layout_marginLeft="145dp"
+        android:layout_marginTop="-160dp">
+        <LinearLayout
+            android:id="@+id/LinearLayout02"
+            android:layout_height="130dp"
+            android:layout_width="340dp">
+            <Button
+                android:id="@+id/Button01"
+                android:text="B1"
+                android:layout_width="165dp"
+                android:layout_weight="0"
+                android:autoText="true"
+                android:layout_height="120dp"
+                android:background="#69234e57"
+                android:layout_marginRight="10dp"
+                android:textColor="#2effffff"
+                android:textStyle="normal"
+                android:typeface="monospace"
+                android:fitsSystemWindows="true"
+                android:textSize="40sp" />
+            <Button
+                android:id="@+id/Button02"
+                android:text="B2"
+                android:layout_width="165dp"
+                android:layout_weight="1"
+                android:layout_height="120dp"
+                android:background="#69234e57"
+                android:textColor="#2effffff"
+                android:typeface="monospace"
+                android:textSize="40sp" />
+        </LinearLayout>
+        <LinearLayout
+            android:id="@+id/LinearLayout01"
+            android:layout_width="340dp"
+            android:layout_weight="0.33"
+            android:layout_height="130dp">
+            <Button
+                android:id="@+id/Button03"
+                android:text="B3"
+                android:layout_width="165dp"
+                android:layout_height="120dp"
+                android:layout_weight="0"
+                android:background="#69234e57"
+                android:layout_marginRight="10dp"
+                android:textColor="#2effffff"
+                android:typeface="monospace"
+                android:textSize="40sp" />
+            <Button
+                android:id="@+id/Button04"
+                android:text="B4"
+                android:layout_width="165dp"
+                android:layout_weight="1"
+                android:layout_height="120dp"
+                android:background="#69234e57"
+                android:textColor="#2effffff"
+                android:typeface="monospace"
+                android:textSize="40sp" />
+        </LinearLayout>
+    </LinearLayout>
+    <SeekBar
+        android:layout_width="250.5dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/seekBarRun"
+        android:layout_marginLeft="430.5dp"
+        android:rotation="270"
+        android:layout_marginTop="-145.5dp"
+        android:max="65"
+        android:progress="0" />
+</LinearLayout>

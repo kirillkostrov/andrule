@@ -9,27 +9,27 @@ namespace Andrule.Network
 {
     public class NetWorkHelper : IDisposable
     {
-        private UdpClient _client;
-        public Context UIcontext;
+        private static UdpClient _client;
+        public static bool IsConnected { get; private set; }
 
-        public bool Connect(string ip)
+        public void Connect(string ip)
         {
             try
             {
                 _client = new UdpClient();
-                //_client.Connect(ip, 51515);
-                _client.Connect("192.168.34.146", 51515);
+                _client.Connect(ip, 51515);
+                //_client.Connect("192.168.137.1", 51515);
+                IsConnected = true;
             }
             catch (Exception e)
             {
-                ShowErrorMessage("Connection error!");
-                Log.Debug("Connection error: ", e.ToString());
-                return false;
+                IsConnected = false;
+                Log.Debug("Connection error: ", e.Message);
+                throw;
             }
-            return true;
         }
 
-        public void Send(string message)
+        public static void Send(string message)
         {
             var messageInByte = Encoding.ASCII.GetBytes(message);
             try
@@ -38,24 +38,21 @@ namespace Andrule.Network
             }
             catch (Exception e)
             {
-                ShowErrorMessage("Sending error!");
-                Log.Debug("Sending error: ", e.ToString());
-                //throw;
+                IsConnected = false;
+                Log.Debug("Sending error: ", e.Message);
+                throw;
             }
         }
 
         public void CloseConnection()
         {
+            IsConnected = false;
             _client?.Close();
-        }
-
-        private void ShowErrorMessage(string message)
-        {
-            UIHelper.ShowMessage(message, UIcontext);
         }
 
         public void Dispose()
         {
+            IsConnected = false;
             _client?.Close();
         }
     }
