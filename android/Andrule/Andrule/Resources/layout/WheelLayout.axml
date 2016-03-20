@@ -16,7 +16,7 @@
         android:layout_marginLeft="-30.5dp"
         android:rotation="270"
         android:layout_marginTop="120dp"
-        android:max="65"
+        android:max="32"
         android:progress="0"
         android:thumb="@drawable/slider2"
         android:drawingCacheQuality="high"
@@ -93,7 +93,7 @@
         android:layout_marginLeft="410.5dp"
         android:rotation="270"
         android:layout_marginTop="-175.5dp"
-        android:max="65"
+        android:max="32"
         android:progress="0"
         android:progressDrawable="@drawable/ProgressRun"
         android:thumb="@drawable/slider2" />
