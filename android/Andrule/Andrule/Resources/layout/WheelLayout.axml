@@ -5,4 +5,22 @@
     android:layout_height="match_parent"
     android:minWidth="25px"
     android:minHeight="25px"
-    android:keepScreenOn="true" />
+    android:keepScreenOn="true"
+    android:scrollbars="vertical"
+    android:verticalScrollbarPosition="defaultPosition">
+    <SeekBar
+        android:layout_width="250.5dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/seekBar1"
+        android:layout_marginBottom="23.5dp"
+        android:layout_marginLeft="-80.5dp"
+        android:rotation="270"
+        android:layout_marginTop="120dp" />
+    <SeekBar
+        android:layout_width="250.5dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/seekBar2"
+        android:layout_marginLeft="480.5dp"
+        android:rotation="270"
+        android:layout_marginTop="-60dp" />
+</LinearLayout>
