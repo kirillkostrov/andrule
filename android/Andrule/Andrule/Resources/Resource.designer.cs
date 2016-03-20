@@ -151,10 +151,10 @@ namespace Andrule
 			public const int rl = 2131099649;
 			
 			// aapt resource value: 0x7f060004
-			public const int seekBar1 = 2131099652;
+			public const int seekBarBrake = 2131099652;
 			
 			// aapt resource value: 0x7f06000c
-			public const int seekBar2 = 2131099660;
+			public const int seekBarRun = 2131099660;
 			
 			// aapt resource value: 0x7f060005
 			public const int wrapper = 2131099653;
