@@ -6,22 +6,30 @@
     p1:layout_centerVertical="true"
     p1:id="@+id/linearLayout1"
     style="@android:style/Theme.Black.NoTitleBar">
-    <EditText
+    <RelativeLayout
+        p1:id="@+id/rl"
         p1:layout_width="284.0dp"
         p1:layout_height="52.5dp"
-        p1:id="@+id/editIpText"
-        p1:inputType="phone"
-        p1:textStyle="bold"
         p1:layout_marginLeft="166.5dp"
         p1:layout_marginTop="68.5dp"
-        p1:typeface="monospace"
-        p1:hint="Enter IP:"
-        p1:drawableTop="#ffffffff"
-        p1:password="false"
-        p1:textColorHint="#ffffffff"
-        p1:background="@drawable/edittextstyle"
-        p1:gravity="center"
-        p1:digits="0123456789." />
+        p1:background="#24ffffff"
+        p1:clipChildren="true">
+        <EditText
+            p1:id="@+id/editIpText"
+            p1:inputType="phone"
+            p1:textStyle="bold"
+            p1:layout_width="286.0dp"
+            p1:layout_height="match_parent"
+            p1:typeface="monospace"
+            p1:hint="Input IP here"
+            p1:password="false"
+            p1:textColorHint="#6bffffff"
+            p1:background="@drawable/EditTextStyle"
+            p1:gravity="center"
+            p1:digits="0123456789."
+            p1:textColor="#ffffffff"
+            p1:textColorHighlight="#ffffffff" />
+    </RelativeLayout>
     <Button
         p1:text="Connect"
         p1:id="@+id/connectButton"
@@ -34,5 +42,6 @@
         p1:layout_width="183.5dp"
         p1:layout_height="55dp"
         p1:ellipsize="start"
-        p1:gravity="center" />
+        p1:gravity="center"
+        p1:textColor="#ffffffff" />
 </LinearLayout>
