@@ -11,11 +11,13 @@
     <SeekBar
         android:layout_width="250.5dp"
         android:layout_height="wrap_content"
-        android:id="@+id/seekBar1"
+        android:id="@+id/seekBarBrake"
         android:layout_marginBottom="23.5dp"
         android:layout_marginLeft="-50.5dp"
         android:rotation="270"
-        android:layout_marginTop="120dp" />
+        android:layout_marginTop="120dp"
+        android:max="65"
+        android:progress="0" />
     <LinearLayout
         android:id="@+id/wrapper"
         android:layout_width="270dp"
@@ -80,8 +82,10 @@
     <SeekBar
         android:layout_width="250.5dp"
         android:layout_height="wrap_content"
-        android:id="@+id/seekBar2"
+        android:id="@+id/seekBarRun"
         android:layout_marginLeft="430.5dp"
         android:rotation="270"
-        android:layout_marginTop="-155.5dp" />
+        android:layout_marginTop="-155.5dp"
+        android:max="65"
+        android:progress="0" />
 </LinearLayout>
