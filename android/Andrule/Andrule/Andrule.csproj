@@ -55,11 +55,12 @@
     <Reference Include="Mono.Android" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Accelerometer\Accelerometer.cs" />
     <Compile Include="MainActivity.cs" />
     <Compile Include="Network\NetWorkHelper.cs" />
     <Compile Include="Resources\Resource.designer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="SimulationListener.cs" />
+    <Compile Include="Accelerometer\AccelerometerListener.cs" />
     <Compile Include="UIDetails\UIHelper.cs" />
     <Compile Include="Views\Tabs\SetupActivity.cs" />
     <Compile Include="Views\Tabs\WheelActivity.cs" />
