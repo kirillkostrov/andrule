@@ -18,8 +18,8 @@ namespace Andrule
             SetContentView(Resource.Layout.Main);
             Tabs = TabHost;
 
-            CreateTab(typeof(SetupActivity), "setup", "Setup");
-            CreateTab(typeof(WheelActivity), "wheel", "Wheel");
+            CreateTab(typeof(SetupActivity), "setup", "SETUP");
+            CreateTab(typeof(WheelActivity), "wheel", "WHEEL");
         }
 
         private void CreateTab(Type activityType, string tag, string label)
@@ -28,7 +28,7 @@ namespace Andrule
             intent.AddFlags(ActivityFlags.NewTask);
 
             var spec = Tabs.NewTabSpec(tag);
-            spec.SetIndicator(label);
+            spec.SetIndicator(labe);
             spec.SetContent(intent);
 
             Tabs.AddTab(spec);
