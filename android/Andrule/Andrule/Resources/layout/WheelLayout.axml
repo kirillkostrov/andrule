@@ -18,9 +18,9 @@
         android:layout_marginTop="120dp"
         android:max="65"
         android:progress="0"
-        android:background="#4eff0000"
         android:thumb="@drawable/slider2"
-        android:drawingCacheQuality="high" />
+        android:drawingCacheQuality="high"
+        android:progressDrawable="@drawable/ProgressBrake" />
     <LinearLayout
         android:id="@+id/wrapper"
         android:layout_width="340dp"
@@ -95,6 +95,6 @@
         android:layout_marginTop="-145.5dp"
         android:max="65"
         android:progress="0"
-        android:background="#7900b60d"
+        android:progressDrawable="@drawable/ProgressRun"
         android:thumb="@drawable/slider2" />
 </LinearLayout>
