@@ -21,8 +21,8 @@ namespace Andrule.Network
             {
                 _client = new UdpClient();
                 // KK's address
-                ip = "192.168.34.146";
-                //ip = "192.168.137.1";
+                //ip = "192.168.34.146";
+                ip = "192.168.137.1";
 
                 _client.Connect(ip, 51515);
                 currentIp = ip;
