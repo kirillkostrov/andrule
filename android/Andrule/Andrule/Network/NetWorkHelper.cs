@@ -17,8 +17,10 @@ namespace Andrule.Network
             try
             {
                 _client = new UdpClient();
-                _client.Connect(ip, 51515);
+                //_client.Connect(ip, 51515);
                 //_client.Connect("192.168.137.1", 51515);
+                // KK's address
+                _client.Connect("192.168.34.146", 51515);
                 IsConnected = true;
             }
             catch (Exception e)
