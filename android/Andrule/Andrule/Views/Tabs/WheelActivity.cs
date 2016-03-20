@@ -27,6 +27,8 @@ namespace Andrule.Views
 		private int _button03Clicked;
 		private int _button04Clicked;
 
+        private const bool invertThrottleAxis = true;
+
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
@@ -95,8 +97,8 @@ namespace Andrule.Views
 		private void seekBarRunProgressChanged(object sender, SeekBar.ProgressChangedEventArgs e){
 			if (e.FromUser)
 			{
-				progressRun = e.Progress * 1000;
-			}
+				progressRun = invertThrottleAxis ? 32000 - e.Progress * 1000 : e.Progress * 1000;
+            }
 		}
     }
 }
