@@ -13,14 +13,75 @@
         android:layout_height="wrap_content"
         android:id="@+id/seekBar1"
         android:layout_marginBottom="23.5dp"
-        android:layout_marginLeft="-80.5dp"
+        android:layout_marginLeft="-50.5dp"
         android:rotation="270"
         android:layout_marginTop="120dp" />
+    <LinearLayout
+        android:id="@+id/wrapper"
+        android:layout_width="270dp"
+        android:weightSum="1"
+        android:orientation="vertical"
+        android:layout_height="270dp"
+        android:layout_marginLeft="185dp"
+        android:layout_marginTop="-170dp">
+        <LinearLayout
+            android:id="@+id/LinearLayout02"
+            android:layout_height="140dp"
+            android:layout_width="270dp">
+            <Button
+                android:id="@+id/Button01"
+                android:text="B1"
+                android:layout_width="130dp"
+                android:layout_weight="0"
+                android:autoText="true"
+                android:layout_height="130dp"
+                android:background="#69234e57"
+                android:layout_marginRight="10dp"
+                android:textColor="#90ffffff"
+                android:textStyle="normal"
+                android:typeface="monospace"
+                android:fitsSystemWindows="true" />
+            <Button
+                android:id="@+id/Button02"
+                android:text="B2"
+                android:layout_width="130dp"
+                android:layout_weight="1"
+                android:layout_height="130dp"
+                android:background="#69234e57"
+                android:textColor="#90ffffff"
+                android:typeface="monospace" />
+        </LinearLayout>
+        <LinearLayout
+            android:id="@+id/LinearLayout01"
+            android:layout_width="270dp"
+            android:layout_weight="0.33"
+            android:layout_height="140dp">
+            <Button
+                android:id="@+id/Button03"
+                android:text="B3"
+                android:layout_width="130dp"
+                android:layout_height="130dp"
+                android:layout_weight="0"
+                android:background="#69234e57"
+                android:layout_marginRight="10dp"
+                android:textColor="#90ffffff"
+                android:typeface="monospace" />
+            <Button
+                android:id="@+id/Button04"
+                android:text="B4"
+                android:layout_width="130dp"
+                android:layout_weight="1"
+                android:layout_height="130dp"
+                android:background="#69234e57"
+                android:textColor="#90ffffff"
+                android:typeface="monospace" />
+        </LinearLayout>
+    </LinearLayout>
     <SeekBar
         android:layout_width="250.5dp"
         android:layout_height="wrap_content"
         android:id="@+id/seekBar2"
-        android:layout_marginLeft="480.5dp"
+        android:layout_marginLeft="430.5dp"
         android:rotation="270"
-        android:layout_marginTop="-60dp" />
+        android:layout_marginTop="-155.5dp" />
 </LinearLayout>
