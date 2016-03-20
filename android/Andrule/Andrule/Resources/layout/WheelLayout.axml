@@ -12,10 +12,9 @@
         android:layout_width="250.5dp"
         android:layout_height="65.0dp"
         android:id="@+id/seekBarBrake"
-        android:layout_marginBottom="23.5dp"
-        android:layout_marginLeft="-30.5dp"
+        android:layout_marginLeft="-60.5dp"
         android:rotation="270"
-        android:layout_marginTop="120dp"
+        android:layout_marginTop="100dp"
         android:max="32"
         android:progress="0"
         android:thumb="@drawable/slider2"
@@ -28,7 +27,7 @@
         android:orientation="vertical"
         android:layout_height="250dp"
         android:layout_marginLeft="145dp"
-        android:layout_marginTop="-160dp">
+        android:layout_marginTop="-140dp">
         <LinearLayout
             android:id="@+id/LinearLayout02"
             android:layout_height="130dp"
@@ -113,7 +112,7 @@
         android:layout_width="250.5dp"
         android:layout_height="65dp"
         android:id="@+id/seekBarRun"
-        android:layout_marginLeft="410.5dp"
+        android:layout_marginLeft="440.5dp"
         android:rotation="270"
         android:layout_marginTop="-175.5dp"
         android:max="32"
