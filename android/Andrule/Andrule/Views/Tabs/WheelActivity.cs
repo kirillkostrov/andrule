@@ -11,6 +11,8 @@ using Andrule.Network;
 using Andrule.UIDetails;
 using Android.Content;
 using Android.Widget;
+using Java.Net;
+using SocketException = System.Net.Sockets.SocketException;
 
 namespace Andrule.Views
 {
@@ -66,6 +68,16 @@ namespace Andrule.Views
 				_button02Clicked = 0;
 				_button03Clicked = 0;
 				_button04Clicked = 0;
+            }
+            catch (SocketException ex)
+            {
+                //UIHelper.ShowMessage("Sending error:" + ex.Message, this);
+                NetWorkHelper.Reconnect();
+            }
+            catch (Java.Net.SocketException ex)
+            {
+                //UIHelper.ShowMessage("Sending error:" + ex.Message, this);
+                NetWorkHelper.Reconnect();
             }
             catch (Exception ex)
             {

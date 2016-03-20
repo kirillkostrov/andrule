@@ -1,5 +1,7 @@
 using System;
 using System.Net.Sockets;
+using System.Runtime.CompilerServices;
+using System.Runtime.InteropServices;
 using System.Text;
 using Android.Content;
 using Android.Util;
@@ -11,16 +13,19 @@ namespace Andrule.Network
     {
         private static UdpClient _client;
         public static bool IsConnected { get; private set; }
+        private static string currentIp { get; set; }
 
-        public void Connect(string ip)
+        public static void Connect(string ip)
         {
             try
             {
                 _client = new UdpClient();
-                //_client.Connect(ip, 51515);
-                //_client.Connect("192.168.137.1", 51515);
                 // KK's address
-                _client.Connect("192.168.34.146", 51515);
+                ip = "192.168.34.146";
+                //ip = "192.168.137.1";
+
+                _client.Connect(ip, 51515);
+                currentIp = ip;
                 IsConnected = true;
             }
             catch (Exception e)
@@ -50,6 +55,11 @@ namespace Andrule.Network
         {
             IsConnected = false;
             _client?.Close();
+        }
+
+        public static void Reconnect()
+        {
+            Connect(currentIp);
         }
 
         public void Dispose()

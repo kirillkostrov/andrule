@@ -32,7 +32,7 @@ namespace Andrule.Views
         {
             try
             {
-                netWorkHelper.Connect(editIpText.Text);
+                NetWorkHelper.Connect(editIpText.Text);
             }
             catch (Exception ex)
             {
