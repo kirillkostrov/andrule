@@ -8,7 +8,7 @@ using Andrule.Network;
 
 namespace Andrule.View
 {
-    [Activity(Label = "Andrule", MainLauncher = true, Icon = "@mipmap/icon", ScreenOrientation = Android.Content.PM.ScreenOrientation.Landscape)]
+    [Activity]
     public class SetupActivity : Activity, ISensorEventListener
     {
         private NetWorkHelper netWorkHelper;
@@ -46,6 +46,7 @@ namespace Andrule.View
                 connectButton.Click -= GetIpAndConnect;
                 connectButton.Text = "Stop";
                 connectButton.Click += CloseConnection;
+                MainActivity.Tabs.SetCurrentTabByTag("wheel");
             }
         }
 
