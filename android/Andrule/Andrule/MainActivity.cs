@@ -3,7 +3,7 @@ using Android.App;
 using Android.Content;
 using Android.Widget;
 using Android.OS;
-using Andrule.View;
+using Andrule.Views;
 
 namespace Andrule
 {
