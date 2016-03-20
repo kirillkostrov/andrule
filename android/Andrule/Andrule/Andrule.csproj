@@ -79,6 +79,12 @@
     </AndroidResource>
     <AndroidResource Include="Resources\drawable\EditTextStyle.xml" />
     <AndroidResource Include="Resources\drawable\slider2.png" />
+    <AndroidResource Include="Resources\drawable\ProgressRun.xml" />
+    <AndroidResource Include="Resources\drawable\backgroundRun_fill.xml" />
+    <AndroidResource Include="Resources\drawable\progressRun_fill.xml" />
+    <AndroidResource Include="Resources\drawable\ProgressBrake.xml" />
+    <AndroidResource Include="Resources\drawable\backgroundBrake_fill.xml" />
+    <AndroidResource Include="Resources\drawable\progressBrake_fill.xml" />
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\layout\Main.axml" />
