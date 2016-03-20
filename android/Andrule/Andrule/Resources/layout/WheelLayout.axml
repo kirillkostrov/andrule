@@ -40,23 +40,35 @@
                 android:layout_weight="0"
                 android:autoText="true"
                 android:layout_height="120dp"
-                android:background="#69234e57"
+                android:background="@drawable/button_primary_selector"
+                android:color="#69234e57"
                 android:layout_marginRight="10dp"
                 android:textColor="#2effffff"
                 android:textStyle="normal"
                 android:typeface="monospace"
                 android:fitsSystemWindows="true"
-                android:textSize="40sp" />
+                android:textSize="40sp"
+                android:editable="false"
+                android:textIsSelectable="false"
+                android:longClickable="false"
+                android:isScrollContainer="false"
+                android:selectAllOnFocus="false" />
             <Button
                 android:id="@+id/Button02"
                 android:text="B2"
                 android:layout_width="165dp"
                 android:layout_weight="1"
                 android:layout_height="120dp"
-                android:background="#69234e57"
+                android:background="@drawable/button_primary_selector"
                 android:textColor="#2effffff"
                 android:typeface="monospace"
-                android:textSize="40sp" />
+                android:textSize="40sp"
+                android:scrollHorizontally="false"
+                android:selectAllOnFocus="false"
+                android:textIsSelectable="false"
+                android:editable="false"
+                android:longClickable="false"
+                android:isScrollContainer="false" />
         </LinearLayout>
         <LinearLayout
             android:id="@+id/LinearLayout01"
@@ -69,21 +81,32 @@
                 android:layout_width="165dp"
                 android:layout_height="120dp"
                 android:layout_weight="0"
-                android:background="#69234e57"
+                android:background="@drawable/button_primary_selector"
                 android:layout_marginRight="10dp"
                 android:textColor="#2effffff"
                 android:typeface="monospace"
-                android:textSize="40sp" />
+                android:textSize="40sp"
+                android:textIsSelectable="false"
+                android:selectAllOnFocus="false"
+                android:editable="false"
+                android:scrollHorizontally="false"
+                android:longClickable="false"
+                android:isScrollContainer="false" />
             <Button
                 android:id="@+id/Button04"
                 android:text="B4"
                 android:layout_width="165dp"
                 android:layout_weight="1"
                 android:layout_height="120dp"
-                android:background="#69234e57"
+                android:background="@drawable/button_primary_selector"
                 android:textColor="#2effffff"
                 android:typeface="monospace"
-                android:textSize="40sp" />
+                android:textSize="40sp"
+                android:textIsSelectable="false"
+                android:selectAllOnFocus="false"
+                android:scrollHorizontally="false"
+                android:longClickable="false"
+                android:isScrollContainer="false" />
         </LinearLayout>
     </LinearLayout>
     <SeekBar
