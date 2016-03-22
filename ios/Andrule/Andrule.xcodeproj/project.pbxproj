@@ -296,6 +296,7 @@
 				7901A2831CA17B1600A4646B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
