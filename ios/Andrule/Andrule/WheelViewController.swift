@@ -11,66 +11,78 @@ import CoreMotion
 
 class SecondViewController: UIViewController {
 
-    @IBOutlet weak var progressBar: UIProgressView!
-    @IBOutlet weak var XGrav: UILabel!
-    @IBOutlet weak var TestImage: UIImageView!
-    @IBOutlet weak var atan: UILabel!
-    @IBOutlet weak var YGrav: UILabel!
-    @IBOutlet weak var ZGrav: UILabel!
-    @IBOutlet weak var StartButton: UIImageView!
+    @IBOutlet weak var BrakeSlider: UISlider!
+    @IBOutlet weak var RuleSlider: UISlider!
+    @IBOutlet weak var ruleLabel: UILabel!
+    @IBOutlet weak var brakeLabel: UILabel!
+    @IBOutlet weak var atanLabel: UILabel!
     
     var updateActive = false;
     var minRotationValue = 0;
     var maxRotaionValue = 30000;
     var lastRotation = 0;
+    var rotation = 0;
+    var brake = 0;
+    var rule = 0;
     var motionManager = CMMotionManager();
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         motionManager.deviceMotionUpdateInterval = 0.01
+        SettingSliders()
+        StartGetSensor()
     }
 
     override func didReceiveMemoryWarning() {
+        
         super.didReceiveMemoryWarning()
+        
         // Dispose of any resources that can be recreated.
     }
     
-    @IBAction func StartButtonClick(sender: UIButton) {
-        updateActive = !updateActive;
+    @IBAction func BrakeSliderChanged(sender: UISlider) {
+        self.brake = Int(BrakeSlider.value);
+        self.brakeLabel.text = String(self.brake);
+    }
+    
+    @IBAction func RuleSliderChanged(sender: UISlider) {
+        self.rule = Int(RuleSlider.value);
+        self.ruleLabel.text = String(self.rule)
+    }
+    
+    func StartGetSensor() -> Void {
         if (motionManager.deviceMotionAvailable == false) {
-            atan.text = "Error";
-            return;
-        }
-        if (!updateActive){
-            motionManager.stopDeviceMotionUpdates()
-            
+            debugPrint("error");
             return;
         }
         motionManager.startDeviceMotionUpdatesToQueue(NSOperationQueue.mainQueue(), withHandler: {
             data, error in
-            let rotation = self.TransformRotation(data!.gravity.x, y: data!.gravity.y);
-            self.XGrav.text = String(data!.gravity.x);
-            self.YGrav.text = String(data!.gravity.y);
-            self.ZGrav.text = String(data!.gravity.z);
-            self.atan.text = String(rotation)
-            
-            let transformImage = CGFloat(atan2(data!.gravity.x, data!.gravity.y) + M_PI)
-            self.TestImage.transform = CGAffineTransformMakeRotation(transformImage * -1)
+            self.rotation = self.TransformRotation(data!.gravity.x, y: data!.gravity.y);
+            self.atanLabel.text = String(self.rotation);
         })
+
     }
     
     func TransformRotation(x: Double, y: Double) -> Int {
-        let rotation = Int((atan2(x, y) + M_PI) * 10000);
-        if (rotation > 45000) {
-            lastRotation = rotation;
-            return 500;
+        let rotation = 32400 - Int((atan2(x, y) + M_PI) * 10000);
+        
+        if (rotation > -16400 && rotation < 0) {
+            return 50;
         }
-        if (rotation > 31000 && rotation < 45000) {
-            lastRotation = rotation;
-            return 30500;
+        if (rotation < -16500) {
+            return 32400;
         }
         return rotation
     }
     
+    func SettingSliders() -> Void {
+        self.BrakeSlider.transform = CGAffineTransformMakeRotation(CGFloat(-M_PI_2));
+        self.RuleSlider.transform = CGAffineTransformMakeRotation(CGFloat(-M_PI_2));
+
+        let thumbImage = UIImage.init(named: "slider_2")
+        self.BrakeSlider.setThumbImage(thumbImage, forState: UIControlState.Normal)
+        self.RuleSlider.setThumbImage(thumbImage, forState: UIControlState.Normal)
+    }
 }
 
