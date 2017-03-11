@@ -20,8 +20,8 @@ namespace AndruleServer
 
                 if (received.Status != TaskStatus.Faulted && received.Result.Message != null)
                 {
-                    //Console.WriteLine($"Message{received.Result.Message}");
-                    //Console.WriteLine($"Sender {received.Result.Sender}");
+                    Console.WriteLine($"Message{received.Result.Message}");
+                    Console.WriteLine($"Sender {received.Result.Sender}");
 
                     if (received.Result.Message.Contains("quit"))
                         break;
@@ -30,6 +30,11 @@ namespace AndruleServer
                     var start = message.IndexOf('^');
                     var end = message.IndexOf('$');
                     
+                    if (start < 0 || end < 0)
+                    {
+                        continue;
+                    }
+
                     var data = message
                         .Remove(end)
                         .Substring(start+1)
