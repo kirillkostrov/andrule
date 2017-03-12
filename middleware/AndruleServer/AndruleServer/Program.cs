@@ -46,10 +46,11 @@ namespace AndruleServer
                             float.Parse(data[0]),
                             float.Parse(data[1]),
                             float.Parse(data[2]),
-                            int.Parse(data[3]),
-                            int.Parse(data[4]),
-                            int.Parse(data[5]),
-                            int.Parse(data[6]));
+                            uint.Parse(data[3])
+                            //int.Parse(data[4]),
+                            //int.Parse(data[5]),
+                            //int.Parse(data[6])
+                            );
 
                         vJoyFeeder.Feed(phoneData);
                     }

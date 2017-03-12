@@ -8,13 +8,15 @@
 
         public int AxisZ { get; set; }
 
-        public int Button1 { get; set; }
+        public uint ButtonStates { get; set; }
 
-        public int Button2 { get; set; }
+        //public int Button1 { get; set; }
+
+        //public int Button2 { get; set; }
         
-        public int Button3 { get; set; }
+        //public int Button3 { get; set; }
 
-        public int Button4 { get; set; }
+        //public int Button4 { get; set; }
 
     }
 }

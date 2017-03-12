@@ -86,12 +86,14 @@ namespace AndruleServer
             _joystickState.AxisY = _axisY;
             _joystickState.AxisZ = _axisZ;
 
-            var btn1 = data.Button1 == 0 ? 0 : 1;
-            var btn2 = data.Button2 == 0 ? 0 : 2;
-            var btn3 = data.Button3 == 0 ? 0 : 4;
-            var btn4 = data.Button4 == 0 ? 0 : 8;
+            //var btn1 = data.Button1 == 0 ? 0 : 1;
+            //var btn2 = data.Button2 == 0 ? 0 : 2;
+            //var btn3 = data.Button3 == 0 ? 0 : 4;
+            //var btn4 = data.Button4 == 0 ? 0 : 8;
 
-            _joystickState.Buttons = (uint)(btn1 | btn2 | btn3 | btn4);
+            //_joystickState.Buttons = (uint)(btn1 | btn2 | btn3 | btn4);
+
+            _joystickState.Buttons = data.ButtonStates;
 
             if (contPovNumber > 0)
             {
