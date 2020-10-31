@@ -1,2 +1,2 @@
 # andrule
-Andrule app
+Andrule app for FLS Hackathon 2016
